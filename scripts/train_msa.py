@@ -64,3 +64,4 @@ if not save_all_epochs:
   os.makedirs('output/weights/', exist_ok=True)
 
   model.save_weights('output/weights/msavae.h5')
+  
