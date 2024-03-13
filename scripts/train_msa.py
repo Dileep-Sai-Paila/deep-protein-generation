@@ -18,11 +18,11 @@ save_all_epochs = False
 seed = np.random.seed(seed)
 
 # Load aligned sequences
-#_, msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_train.fa.gz', one_hot=False)
-#_, val_msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_val.fa.gz', one_hot=False)
+_, msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_train.fa.gz', one_hot=False)
+_, val_msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_val.fa.gz', one_hot=False)
 
-_, msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
-_, val_msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
+#_, msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
+#_, val_msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
 
 #_, msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
 #_, val_msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)

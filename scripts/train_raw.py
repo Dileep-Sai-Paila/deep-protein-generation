@@ -21,6 +21,7 @@ seed = np.random.seed(seed)
 _, raw_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
 _, val_raw_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
 
+
 # Define data generators
 train_gen = one_hot_generator(raw_seqs, padding=504)
 val_gen = one_hot_generator(val_raw_seqs, padding=504)
