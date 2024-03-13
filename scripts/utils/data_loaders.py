@@ -3,11 +3,11 @@ import pandas as pd
 from utils import aa_letters
 
 
-# def seq_to_one_hot(sequence, aa_key):
-#     arr = np.zeros((len(sequence),len(aa_key)))
-#     for j, c in enumerate(sequence):
-#         arr[j, aa_key[c]] = 1
-#     return arr
+def seq_to_one_hot(sequence, aa_key):
+    arr = np.zeros((len(sequence),len(aa_key)))
+    for j, c in enumerate(sequence):
+        arr[j, aa_key[c]] = 1
+    return arr
 
 # def seq_to_one_hot(sequence, aa_key):
 #     arr = np.zeros((len(sequence), len(aa_key)))
@@ -25,15 +25,15 @@ from utils import aa_letters
 #             arr[j, aa_key[c]] = 1
 #     return arr
 
-def seq_to_one_hot(sequence, aa_key):
-    arr = np.zeros((len(sequence),len(aa_key)))
-    for j, c in enumerate(sequence):
-        if c in aa_key:
-            arr[j, aa_key[c]] = 1
-        else:
-            # Handle unknown characters (e.g., '\r') by ignoring them
-            pass
-    return arr
+# def seq_to_one_hot(sequence, aa_key):
+#     arr = np.zeros((len(sequence),len(aa_key)))
+#     for j, c in enumerate(sequence):
+#         if c in aa_key:
+#             arr[j, aa_key[c]] = 1
+#         else:
+#             # Handle unknown characters (e.g., '\r') by ignoring them
+#             pass
+#     return arr
 
 # def to_one_hot(seqlist, alphabet=aa_letters):
 #     aa_key = {l: i for i, l in enumerate(alphabet)}

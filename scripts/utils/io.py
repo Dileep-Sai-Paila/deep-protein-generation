@@ -14,49 +14,29 @@ def compress_file(filename):
             b = gzip.compress(f.read())
             gzout.write(b)
 
-def read_gzfasta(filepath, output_arr=False, encoding='utf-8'):
-    names = []
-    seqs = []
-    seq = ''
-    with gzip.open(filepath, 'rb') as fin:
-        file_content = fin.read().decode(encoding)
-        lines = file_content.split('\n')
-        for line in lines:
-            if line:
-                if line[0] == '>':
-                    if seq:
-                        names.append(name)
-                        if output_arr:
-                            seqs.append(np.array(list(seq)))
-                        else:
-                            seqs.append(seq)
-                    name = line[1:]
-                    seq = ''
-                else:
-                    seq += line
-            else:
-                continue
-        if seq: # handle last seq in file
-            names.append(name)
-            if output_arr:
-                seqs.append(np.array(list(seq)))
-            else:
-                seqs.append(seq)
-    if output_arr:
-        seqs = np.array(seqs)
-    return names, seqs
 # def read_gzfasta(filepath, output_arr=False, encoding='utf-8'):
 #     names = []
 #     seqs = []
+#     seq = ''
 #     with gzip.open(filepath, 'rb') as fin:
 #         file_content = fin.read().decode(encoding)
-#         sequences = file_content.split('>')  # Split content by '>'
-#         for entry in sequences:
-#             if not entry:
-#                 continue  # Skip empty entries
-#             lines = entry.split('\n')  # Split each entry by newline
-#             name = lines[0]  # First line is the name/header
-#             seq = ''.join(lines[1:])  # Concatenate remaining lines to form sequence
+#         lines = file_content.split('\n')
+#         for line in lines:
+#             if line:
+#                 if line[0] == '>':
+#                     if seq:
+#                         names.append(name)
+#                         if output_arr:
+#                             seqs.append(np.array(list(seq)))
+#                         else:
+#                             seqs.append(seq)
+#                     name = line[1:]
+#                     seq = ''
+#                 else:
+#                     seq += line
+#             else:
+#                 continue
+#         if seq: # handle last seq in file
 #             names.append(name)
 #             if output_arr:
 #                 seqs.append(np.array(list(seq)))
@@ -65,6 +45,26 @@ def read_gzfasta(filepath, output_arr=False, encoding='utf-8'):
 #     if output_arr:
 #         seqs = np.array(seqs)
 #     return names, seqs
+def read_gzfasta(filepath, output_arr=False, encoding='utf-8'):
+    names = []
+    seqs = []
+    with gzip.open(filepath, 'rb') as fin:
+        file_content = fin.read().decode(encoding)
+        sequences = file_content.split('>')  # Split content by '>'
+        for entry in sequences:
+            if not entry:
+                continue  # Skip empty entries
+            lines = entry.split('\n')  # Split each entry by newline
+            name = lines[0]  # First line is the name/header
+            seq = ''.join(lines[1:])  # Concatenate remaining lines to form sequence
+            names.append(name)
+            if output_arr:
+                seqs.append(np.array(list(seq)))
+            else:
+                seqs.append(seq)
+    if output_arr:
+        seqs = np.array(seqs)
+    return names, seqs
 
 def read_fasta(filepath, output_arr=False):
     names = []
