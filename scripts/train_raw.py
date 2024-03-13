@@ -18,8 +18,8 @@ save_all_epochs = False
 seed = np.random.seed(seed)
 
 # Load aligned sequences
-_, raw_seqs = load_gzdata('data/training_data/ll_train.fa.gz', one_hot=False)
-_, val_raw_seqs = load_gzdata('data/training_data/ll_val.fa.gz', one_hot=False)
+_, raw_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
+_, val_raw_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
 
 # Define data generators
 train_gen = one_hot_generator(raw_seqs, padding=504)

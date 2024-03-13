@@ -12,7 +12,8 @@ def main(weights_file, msa=True, num_samples=500, output_file=None, model_kwargs
 
   if output_file is None:
     base_name = weights_file.split('/')[-1].split('.')[0]
-    output_file = 'output/generated_sequences/{}_variants.fa'.format(base_name)
+    #output_file = 'output/generated_sequences/{}_variants.fa'.format(base_name)
+    output_file = '{}_samples.fa'.format(base_name)
 
   if model_kwargs is None:
     model_kwargs = {}

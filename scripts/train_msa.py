@@ -18,8 +18,14 @@ save_all_epochs = False
 seed = np.random.seed(seed)
 
 # Load aligned sequences
-_, msa_seqs = load_gzdata('data/training_data/luxafilt_llmsa_train.fa.gz', one_hot=False)
-_, val_msa_seqs = load_gzdata('data/training_data/luxafilt_llmsa_val.fa.gz', one_hot=False)
+_, msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_train.fa.gz', one_hot=False)
+_, val_msa_seqs = load_gzdata(r'C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\luxafilt_llmsa_val.fa.gz', one_hot=False)
+
+#_, msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
+#_, val_msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\jagame_maya.gz", one_hot=False)
+
+#_, msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
+#_, val_msa_seqs = load_gzdata(r"C:\Users\dilee\OneDrive\Desktop\deep-protein-generation\scripts\processed_seq02.gz", one_hot=False)
 
 # Define data generators
 train_gen = one_hot_generator(msa_seqs, padding=None)
@@ -30,6 +36,11 @@ print('Building model')
 model = MSAVAE(original_dim=360, latent_dim=10)
 
 # (Optionally) define callbacks
+import os
+
+## Create output/logs directory if it doesn't exist
+os.makedirs('output/logs/', exist_ok=True)
+
 callbacks=[CSVLogger('output/logs/msavae.csv')]
 
 if save_all_epochs:
@@ -47,4 +58,9 @@ model.VAE.fit_generator(generator=train_gen,
                         callbacks=callbacks)
 
 if not save_all_epochs:
+  import os
+
+  # Create output/weights directory if it doesn't exist
+  os.makedirs('output/weights/', exist_ok=True)
+
   model.save_weights('output/weights/msavae.h5')
